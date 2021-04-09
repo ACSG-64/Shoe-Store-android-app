@@ -41,11 +41,11 @@ class ShoeDetailFragment : Fragment() {
             if( fillFields(shoeItem.name, shoeItem.company, shoeItem.size) ){
                 shoeItem.images = arrayOf<Int>(R.drawable.shoe_blue, R.drawable.shoe_red, R.drawable.shoe_brown).random()
                 viewModel.addShoe(shoeItem)
+
                 view.findNavController().navigate(R.id.action_shoeDetailFragment_to_shoeListingFragment)
             } else {
                 Toast.makeText(activity, "Fill the fields with valid data!", Toast.LENGTH_LONG).show()
             }
-
         }
 
         cancelRecord_button.setOnClickListener {

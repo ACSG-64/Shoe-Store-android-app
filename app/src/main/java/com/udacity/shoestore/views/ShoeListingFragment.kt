@@ -24,8 +24,6 @@ import kotlinx.android.synthetic.main.shoe_card.view.*
 class ShoeListingFragment : Fragment(), CardClickListener {
 
     private lateinit var viewModel : ShoeListViewModel
-    //private lateinit var shoeCard : View
-    val shoeItemListAdapter = ShoeItemListAdapter(arrayListOf())
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -44,34 +42,15 @@ class ShoeListingFragment : Fragment(), CardClickListener {
 
         viewModel.shoeItems.observe(viewLifecycleOwner, Observer<List<Shoe>>{ shoes ->
             for (shoe in shoes){
-                // val tableRow = TableRow(context)
-                // tableRow.layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.MATCH_PARENT)
                 val shoeCard = View.inflate(context, R.layout.shoe_card, null)
                 DataBindingUtil.bind<ShoeCardBinding>(shoeCard)
                 shoe_list.addView(shoeCard)
-
-                Log.d("ADD VIEW", "FIRST")
-
-
-                Log.d("ADD VIEW", "Second")
                 val binding = DataBindingUtil.getBinding<ShoeCardBinding>(shoeCard)
                 binding?.setVariable(BR.shoe, shoe)
                 binding?.setVariable(BR.clickListener, this)
                 binding?.executePendingBindings()
             }
         })
-
-        /*
-        val tableRow = TableRow(context)
-
-        val shoeCard = View.inflate(context, R.layout.shoe_card, null)
-
-        val test = Shoe("Nice", 77.toDouble(), "LOL", "Mazter", 77)
-
-        DataBindingUtil.bind<ShoeCardBinding>(shoeCard)?.setVariable(BR.shoe, Shoe("lol", 77.toDouble(), "xd", "nice", 4))
-
-        shoe_list.addView(shoeCard)
-        */
 
         addShoe_button.setOnClickListener {
             view.findNavController().navigate(R.id.action_shoeListingFragment_to_shoeDetailFragment)
@@ -91,7 +70,6 @@ class ShoeListingFragment : Fragment(), CardClickListener {
     override fun onCardClicked(card: View) {
         card.shoe_description?.visibility = View.VISIBLE
         card.expandDetails_button?.visibility = View.GONE
-        //v.shoe_description?.visibility = View.VISIBLE
         Log.d("INTERFACE", "OK")
     }
 
