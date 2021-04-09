@@ -9,9 +9,8 @@ class ShoeListViewModel : ViewModel() {
     val shoeItemsList = arrayListOf<Shoe>()
     val shoeItems by lazy { MutableLiveData<MutableList<Shoe>>() }
 
-    fun addShoe(name: String, size: Double, company: String, description: String, image: Int){
-        val shoe_item = Shoe(name, size, company, description, image)
-        shoeItemsList.add(shoe_item)
+    fun addShoe(shoeItem: Shoe){
+        shoeItemsList.add(shoeItem)
         shoeItems.setValue(shoeItemsList)
     }
 }

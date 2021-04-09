@@ -2,10 +2,14 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.udacity.shoestore.views.ShoeDetailFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <data></data>
+    <data>
+        <variable
+            name="fields"
+            type="com.udacity.shoestore.models.Shoe">
+        </variable>
+    </data>
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -62,7 +66,8 @@
                     android:hint="@string/shoe_1_hint"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:importantForAutofill="no" />
+                    android:importantForAutofill="no"
+                    android:text="@={fields.name}"/>
 
                 <TextView
                     android:id="@+id/shoe_title"
@@ -79,7 +84,8 @@
                     android:hint="@string/company_hint"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:importantForAutofill="no" />
+                    android:importantForAutofill="no"
+                    android:text="@={fields.company}"/>
 
                 <TextView
                     android:id="@+id/textView8"
@@ -92,10 +98,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#F6F6F6"
+                    android:clickable="true"
                     android:ems="10"
                     android:hint="@string/size_hint"
+                    android:importantForAutofill="no"
                     android:inputType="number"
-                    android:importantForAutofill="no" />
+                    android:text="@={`` + fields.size}" />
 
                 <TextView
                     android:id="@+id/textView9"
@@ -113,7 +121,8 @@
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:minHeight="80dp"
-                    android:textAlignment="textStart" />
+                    android:textAlignment="textStart"
+                    android:text="@={fields.description}"/>
 
                 <Button
                     android:id="@+id/addRecord_button"

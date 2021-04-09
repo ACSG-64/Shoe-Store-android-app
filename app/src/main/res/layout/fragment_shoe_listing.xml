@@ -71,11 +71,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/shoeList_recyclerView"
+                <LinearLayout
+                    android:id="@+id/shoe_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:listitem="@layout/shoe_card" />
+                    android:orientation="vertical"></LinearLayout>
             </ScrollView>
 
         </LinearLayout>
